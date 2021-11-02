@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="style.css">
+ <title>Gleb o'clock</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&family=Work+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+    <h1>Obviously, the time is: </h1> 
+ <div class="coolframe">
+   <div id="timebox" >
+     <p>Placeholder lol</p>
+    </div>
+    <br>  
+    <div id="timer">
+    <input type="text" name="time" id="time">
+    <button id="timerbutton">Start</button>
+    <input type="reset" value="Reset">
+    </div>
+  
+    <script>
+        window.onload = function()
+  {
+   window.setInterval
+   (
+    function()
+     {
+      const thetimeis = new Date();
+      const time = document.getElementById("timebox");
+      time.innerHTML = thetimeis.toLocaleTimeString();
+     }
+   ,1000);
+  }
+ let timerInput = document.getElementById("time"); 
+let buttonRun = document.getElementById("button");
+let timerShow = document.getElementById("timerbutton");
+let timeMinut;
+buttonRun.addEventListener('click', function() {timeMinut = parseInt(timerInput.value)* 60})
+timer = setInterval(function () {
+    seconds = timeMinut%60 
+    minutes = timeMinut/60%60 
+    hour = timeMinut/60/60%60 
+    if (timeMinut <= 0) {
+        clearInterval(timer);
+        alert("Время закончилось");
+    } else { 
+        let strTimer = `${Math.trunc(hour)}:${Math.trunc(minutes)}:${seconds}`;
+        timerShow.innerHTML = strTimer;
+    }
+    --timeMinut;
+})
+    </script>
+</body>
+</html>
